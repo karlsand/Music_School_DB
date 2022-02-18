@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Music_School_DB.Data;
+using Music_School_DB.Domain.Party;
+using Music_School_DB.Facade.Party;
 
 namespace Music_School_DB.Pages.Instructors
 {
@@ -19,7 +21,7 @@ namespace Music_School_DB.Pages.Instructors
             _context = context;
         }
 
-        public Instructor Instructor { get; set; }
+        public InstructorView Instructor { get; set; }
 
         public async Task<IActionResult> OnGetAsync(string id)
         {
@@ -28,12 +30,15 @@ namespace Music_School_DB.Pages.Instructors
                 return NotFound();
             }
 
-            Instructor = await _context.Instructor.FirstOrDefaultAsync(m => m.ID == id);
+            var d = await _context.Instructors.FirstOrDefaultAsync(m => m.ID == id);
 
-            if (Instructor == null)
+            if (d == null)
             {
                 return NotFound();
             }
+
+            Instructor = new InstructorViewFactory().Create(new Instructor(d));
+
             return Page();
         }
     }

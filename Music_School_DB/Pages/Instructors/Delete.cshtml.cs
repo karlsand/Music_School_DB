@@ -1,12 +1,9 @@
 ﻿#nullable disable
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using Music_School_DB.Data;
+using Music_School_DB.Domain.Party;
+using Music_School_DB.Facade.Party;
 
 namespace Music_School_DB.Pages.Instructors
 {
@@ -20,7 +17,7 @@ namespace Music_School_DB.Pages.Instructors
         }
 
         [BindProperty]
-        public Instructor Instructor { get; set; }
+        public InstructorView Instructor { get; set; }
 
         public async Task<IActionResult> OnGetAsync(string id)
         {
@@ -29,7 +26,8 @@ namespace Music_School_DB.Pages.Instructors
                 return NotFound();
             }
 
-            Instructor = await _context.Instructor.FirstOrDefaultAsync(m => m.ID == id);
+            var d = await _context.Instructors.FirstOrDefaultAsync(m => m.ID == id);
+            Instructor = new InstructorViewFactory().Create(new Instructor(d));
 
             if (Instructor == null)
             {
@@ -45,11 +43,11 @@ namespace Music_School_DB.Pages.Instructors
                 return NotFound();
             }
 
-            Instructor = await _context.Instructor.FindAsync(id);
+            var d = await _context.Instructors.FindAsync(id);
 
-            if (Instructor != null)
+            if (d != null)
             {
-                _context.Instructor.Remove(Instructor);
+                _context.Instructors.Remove(d);
                 await _context.SaveChangesAsync();
             }
 

@@ -11,8 +11,8 @@ using Music_School_DB.Data;
 namespace Music_School_DB.Migrations
 {
     [DbContext(typeof(Music_School_DBContext))]
-    [Migration("20220217131406_MusicContext")]
-    partial class MusicContext
+    [Migration("20220218121639_music")]
+    partial class music
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,7 +23,7 @@ namespace Music_School_DB.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("Music_School_DB.Data.Instructor", b =>
+            modelBuilder.Entity("Music_School_DB.Data.Party.InstructorData", b =>
                 {
                     b.Property<string>("ID")
                         .HasColumnType("nvarchar(450)");
@@ -45,7 +45,7 @@ namespace Music_School_DB.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("Instructor");
+                    b.ToTable("Instructors");
                 });
 #pragma warning restore 612, 618
         }

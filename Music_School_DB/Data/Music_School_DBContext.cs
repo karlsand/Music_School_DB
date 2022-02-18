@@ -1,9 +1,6 @@
 ﻿#nullable disable
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Music_School_DB.Data.Party;
 
 namespace Music_School_DB.Data
 {
@@ -14,6 +11,6 @@ namespace Music_School_DB.Data
         {
         }
 
-        public DbSet<Music_School_DB.Data.Instructor> Instructor { get; set; }
+        public DbSet<InstructorData> Instructors { get; set; }
     }
 }

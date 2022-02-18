@@ -21,7 +21,7 @@ namespace Music_School_DB.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("Music_School_DB.Data.Instructor", b =>
+            modelBuilder.Entity("Music_School_DB.Data.Party.InstructorData", b =>
                 {
                     b.Property<string>("ID")
                         .HasColumnType("nvarchar(450)");
@@ -43,7 +43,7 @@ namespace Music_School_DB.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("Instructor");
+                    b.ToTable("Instructors");
                 });
 #pragma warning restore 612, 618
         }

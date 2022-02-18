@@ -4,12 +4,12 @@
 
 namespace Music_School_DB.Migrations
 {
-    public partial class MusicContext : Migration
+    public partial class music : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Instructor",
+                name: "Instructors",
                 columns: table => new
                 {
                     ID = table.Column<string>(type: "nvarchar(450)", nullable: false),
@@ -21,14 +21,14 @@ namespace Music_School_DB.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Instructor", x => x.ID);
+                    table.PrimaryKey("PK_Instructors", x => x.ID);
                 });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Instructor");
+                name: "Instructors");
         }
     }
 }

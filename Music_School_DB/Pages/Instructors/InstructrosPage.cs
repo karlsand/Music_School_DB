@@ -1,11 +1,8 @@
-﻿#nullable disable
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using Music_School_DB.Facade.Party;
+﻿using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Music_School_DB.Pages.Instructors
 {
-    public class CreateModel : PageModel
+    public class InstructrosPage : PageModel
     {
         private readonly Music_School_DB.Data.Music_School_DBContext _context;
 
