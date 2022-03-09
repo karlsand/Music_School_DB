@@ -2,24 +2,9 @@
 @model Music_School_DB.Pages.Instructors.InstructrosPage
 
 @{
-    ViewData["Title"] = "Details";
+    Layout = "_Details";
 }
 
-<h1>Details</h1>
-
-<div>
-    <h4>Instructor</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Instructor.FullName)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Instructor.FullName)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-page="./Edit" asp-page-handler="Edit" asp-route-id="@Model.Instructor.ID">Edit</a> |
-    <a asp-page="./Index" asp-page-handler="Index">Back to List</a>
-</div>
+<body>
+    <partial name= "_ShowInstructor"/>
+</body>
