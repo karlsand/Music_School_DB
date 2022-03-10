@@ -2,19 +2,17 @@
 
 namespace Music_School_DB.Domain.Party
 {
-    public class Instructor
+    public class Instructor : Entity<InstructorData>
     {
         private const string defaultStr = "Undefined";
-        private InstructorData data;
         public Instructor() : this(new InstructorData()) { }
-        public Instructor (InstructorData d) => data = d;
-        public string ID => data?.ID ?? defaultStr;
-        public string InstrumentID => data?.InstrumentID ?? defaultStr;
-        public string FirstName => data?.FirstName ?? defaultStr;
-        public string LastName => data?.LastName ?? defaultStr;
-        public string Email => data?.Email ?? defaultStr;
-        public string PhoneNr => data?.PhoneNr ?? defaultStr;
-        public InstructorData Data => data;
+        public Instructor (InstructorData d) : base(d) { }
+        public string ID => Data?.ID ?? defaultStr;
+        public string InstrumentID => Data?.InstrumentID ?? defaultStr;
+        public string FirstName => Data?.FirstName ?? defaultStr;
+        public string LastName => Data?.LastName ?? defaultStr;
+        public string Email => Data?.Email ?? defaultStr;
+        public string PhoneNr => Data?.PhoneNr ?? defaultStr;
         public override string ToString() => $"{FirstName} {LastName} ({Email}, {PhoneNr})";
     }
 }

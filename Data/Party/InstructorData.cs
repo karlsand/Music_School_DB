@@ -1,8 +1,7 @@
 ﻿namespace Music_School_DB.Data.Party
 {
-    public class InstructorData
+    public class InstructorData : EntityData
     {
-        public string ID { get; set; }
         public string? InstrumentID { get; set; }
         public string? FirstName { get; set; }
         public string? LastName { get; set; }
