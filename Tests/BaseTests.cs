@@ -4,7 +4,7 @@ using System.Reflection;
 
 namespace Music_School_DB.Tests
 {
-    public abstract class BaseTests<TClass> : AssertTests where TClass : class, new()
+    public abstract class BaseTests<TClass> : IsTypeTested where TClass : class, new()
     {
         protected TClass obj;
         protected BaseTests() => obj = new TClass();
