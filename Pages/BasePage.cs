@@ -1,35 +1,35 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Music_School_DB.Data;
-using Music_School_DB.Domain.Party;
-using Music_School_DB.Facade.Party;
-using Music_School_DB.Infra.Party;
+using Music_School_DB.Domain;
+using Music_School_DB.Facade;
 
-namespace Music_School_DB.Pages.Instructors
+namespace Music_School_DB.Pages
 {
-    public class InstructrosPage : PageModel
+    public abstract class BasePage<TView, TEntity, TRepo> : PageModel where TView : BaseView where TRepo : IBaseRepo<TEntity> where TEntity : Entity
     {
-        private readonly IInstructorsRepo repo;
-        [BindProperty]
-        public InstructorView Instructor { get; set; }
-        public IList<InstructorView> Instructors { get; set; }
-        public InstructrosPage(Music_School_DBContext c) => repo = new InstructorsRepo(c, c.Instructors);
+        private readonly TRepo repo;
+        protected abstract TView toView(TEntity? entity);
+        protected abstract TEntity toObject(TView? item);
+        [BindProperty] public TView? Item { get; set; }
+        public IList<TView>? Items { get; set; }
+        public string ItemID => Item?.ID ?? string.Empty;
+        public BasePage(TRepo r) => repo = r;
         public IActionResult OnGetCreate() => Page();
         public async Task<IActionResult> OnPostCreateAsync()
         {
             if (!ModelState.IsValid) return Page();
-            await repo.AddAsync(new InstructorViewFactory().Create(Instructor));
+            await repo.AddAsync(toObject(Item));
             return RedirectToPage("./Index", "Index");
         }
         public async Task<IActionResult> OnGetDetailsAsync(string id)
         {
-            Instructor = await getInstructor(id);
-            return Instructor == null ? NotFound() : Page();
+            Item = await getItem(id);
+            return Item == null ? NotFound() : Page();
         }
         public async Task<IActionResult> OnGetDeleteAsync(string id)
         {
-            Instructor = await getInstructor(id);
-            return Instructor == null ? NotFound() : Page();
+            Item = await getItem(id);
+            return Item == null ? NotFound() : Page();
         }
         public async Task<IActionResult> OnPostDeleteAsync(string id)
         {
@@ -39,13 +39,13 @@ namespace Music_School_DB.Pages.Instructors
         }
         public async Task<IActionResult> OnGetEditAsync(string id)
         {
-            Instructor = await getInstructor(id);
-            return Instructor == null ? NotFound() : Page();
+            Item = await getItem(id);
+            return Item == null ? NotFound() : Page();
         }
         public async Task<IActionResult> OnPostEditAsync()
         {
             if (!ModelState.IsValid) return Page();
-            var obj = new InstructorViewFactory().Create(Instructor);
+            var obj = toObject(Item);
             var updated = await repo.UpdateAsync(obj);
             if (!updated) NotFound();
             return RedirectToPage("./Index", "Index");
@@ -53,14 +53,14 @@ namespace Music_School_DB.Pages.Instructors
         public async Task<IActionResult> OnGetIndexAsync()
         {
             var list = await repo.GetAsync();
-            Instructors = new List<InstructorView>();
+            Items = new List<TView>();
             foreach (var obj in list)
             {
-                var v = new InstructorViewFactory().Create(obj);
-                Instructors.Add(v);
+                var v = toView(obj);
+                Items.Add(v);
             }
             return Page();
         }
-        private async Task<InstructorView> getInstructor(string id) => new InstructorViewFactory().Create(await repo.GetAsync(id));
+        private async Task<TView> getItem(string id) => toView(await repo.GetAsync(id));
     }
 }

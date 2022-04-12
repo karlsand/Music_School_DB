@@ -1,10 +1,11 @@
-﻿@model Music_School_DB.Pages.InstructrosPage
+﻿@model Music_School_DB.Pages.StudentsPage
 @using Music_School_DB.Pages.Extensions
 
 
 
 @Html.MyEditorFor(x => x.Item.ID)
 @Html.MyEditorFor(x => x.Item.InstrumentID)
+@Html.MyEditorFor(x => x.Item.InstructorID)
 @Html.MyEditorFor(x => x.Item.FirstName)
 @Html.MyEditorFor(x => x.Item.LastName)
 @Html.MyEditorFor(x => x.Item.Email)

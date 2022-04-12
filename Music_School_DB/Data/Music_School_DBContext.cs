@@ -1,6 +1,5 @@
 ﻿#nullable disable
 using Microsoft.EntityFrameworkCore;
-using Music_School_DB.Data.Party;
 
 namespace Music_School_DB.Data
 {
@@ -10,7 +9,5 @@ namespace Music_School_DB.Data
             : base(options)
         {
         }
-
-        public DbSet<InstructorData> Instructors { get; set; }
     }
 }

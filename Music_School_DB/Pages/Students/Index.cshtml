@@ -1,5 +1,5 @@
 ﻿@page
-@model Music_School_DB.Pages.InstructrosPage
+@model Music_School_DB.Pages.StudentsPage
 
 @{
     ViewData["Title"] = "Index";
@@ -14,10 +14,10 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Items[0].FullName)
+                @Html.DisplayNameFor(model => model.Items[0].InstrumentID)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Items[0].InstrumentID)
+                @Html.DisplayNameFor(model => model.Items[0].InstructorID)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Items[0].FirstName)
@@ -38,10 +38,10 @@
 @foreach (var item in Model.Items) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.FullName)
+                @Html.DisplayFor(modelItem => item.InstrumentID)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.InstrumentID)
+                @Html.DisplayFor(modelItem => item.InstructorID)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.FirstName)

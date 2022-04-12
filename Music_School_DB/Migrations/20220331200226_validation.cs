@@ -2,9 +2,9 @@
 
 #nullable disable
 
-namespace Music_School_DB.Data.Migrations
+namespace Music_School_DB.Migrations
 {
-    public partial class app : Migration
+    public partial class validation : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

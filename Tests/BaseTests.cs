@@ -4,10 +4,11 @@ using System.Reflection;
 
 namespace Music_School_DB.Tests
 {
-    public abstract class BaseTests<TClass> : IsTypeTested where TClass : class, new()
+    public abstract class BaseTests : IsTypeTested
     {
-        protected TClass obj;
-        protected BaseTests() => obj = new TClass();
+        protected object obj;
+        protected BaseTests() => obj = createObj();
+        protected abstract object createObj();
         protected void isProperty<T>(T? value = default, bool isReadOnly = false)
         {
             var memberName = getCallingMember(nameof(isProperty)).Replace("Test", string.Empty);

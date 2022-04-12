@@ -2,7 +2,7 @@
     ViewData["Title"] = "Delete";
     ViewData["SubTitle"] = Model?.GetType()?.Name?.Replace("Page", string.Empty) ?? "Unspecified";
     Layout = "_Layout";
-    var itemId = Model?.Instructor?.ID?? string.Empty;
+    var itemId = Model?.ItemID?? string.Empty;
 }
 
 <h1>@ViewData["Title"]</h1>
