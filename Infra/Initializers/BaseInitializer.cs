@@ -3,7 +3,7 @@ using Music_School_DB.Data;
 
 namespace Music_School_DB.Infra.Initializers
 {
-    public abstract class BaseInitializer<TData> where TData : EntityData
+    public abstract class BaseInitializer<TData> where TData : UniqueData
     {
         internal protected DbContext? db;
         internal protected DbSet<TData>? set;
@@ -19,6 +19,7 @@ namespace Music_School_DB.Infra.Initializers
             db?.SaveChanges();
         }
         protected abstract IEnumerable<TData> getEntities { get; }
+        internal static bool isCorrectIsoCode(string id) => string.IsNullOrWhiteSpace(id) ? false : char.IsLetter(id[0]);
     }
     public static class MSDbInitializer
     {

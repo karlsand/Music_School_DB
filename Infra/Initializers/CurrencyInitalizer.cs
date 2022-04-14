@@ -16,9 +16,10 @@ namespace Music_School_DB.Infra.Initializers
                 foreach (CultureInfo cul in CultureInfo.GetCultures(CultureTypes.SpecificCultures))
                 {
                     var c = new RegionInfo(new CultureInfo(cul.Name, false).LCID);
-                    if (l.FirstOrDefault(x => x.ID == c.ISOCurrencySymbol) is not null) continue;
-                    if (string.IsNullOrWhiteSpace(c.ISOCurrencySymbol)) continue;
-                    var d = createCurrency(c.ISOCurrencySymbol, c.CurrencyEnglishName, c.CurrencyNativeName);
+                    var id = c.ISOCurrencySymbol;
+                    if (!isCorrectIsoCode(id)) continue;
+                    if (l.FirstOrDefault(x => x.ID == id) is not null) continue;
+                    var d = createCurrency(id, c.CurrencyEnglishName, c.CurrencyNativeName);
                     l.Add(d);
                 }
                 return l;
@@ -26,8 +27,8 @@ namespace Music_School_DB.Infra.Initializers
         }
         internal static CurrencyData createCurrency(string code, string name, string description) => new()
         {
-            ID = code ?? EntityData.NewID,
-            Code = code ?? Entity.DefaultStr,
+            ID = code ?? UniqueData.NewID,
+            Code = code ?? UniqueEntity.DefaultStr,
             Name = name,
             Description = description,
         };

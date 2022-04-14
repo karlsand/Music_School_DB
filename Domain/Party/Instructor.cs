@@ -3,7 +3,7 @@
 namespace Music_School_DB.Domain.Party
 {
     public interface IInstructorsRepo : IRepo<Instructor> { }
-    public class Instructor : Entity<InstructorData>
+    public class Instructor : UniqueEntity<InstructorData>
     {
         public Instructor() : this(new InstructorData()) { }
         public Instructor (InstructorData d) : base(d) { }

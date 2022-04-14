@@ -1,6 +1,6 @@
 ﻿namespace Music_School_DB.Data.Party
 {
-    public sealed class StudentData : EntityData
+    public sealed class StudentData : UniqueData
     {
         public string? InstrumentID { get; set; }
         public string? InstructorID { get; set; }

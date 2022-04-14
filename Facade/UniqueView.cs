@@ -2,7 +2,7 @@
 
 namespace Music_School_DB.Facade
 {
-    public abstract class BaseView
+    public abstract class UniqueView
     {
         [Required] public string ID { get; set; } = Guid.NewGuid().ToString();
     }

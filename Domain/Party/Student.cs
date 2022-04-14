@@ -3,7 +3,7 @@
 namespace Music_School_DB.Domain.Party
 {
     public interface IStudentRepo : IRepo<Student> { }
-    public sealed class Student : Entity<StudentData>
+    public sealed class Student : UniqueEntity<StudentData>
     {
         public Student() : this(new StudentData()) { }
         public Student(StudentData d) : base(d) { }

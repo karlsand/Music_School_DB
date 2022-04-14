@@ -5,7 +5,7 @@ using Music_School_DB.Facade;
 
 namespace Music_School_DB.Pages
 {
-    public abstract class BasePage<TView, TEntity, TRepo> : PageModel where TView : BaseView where TRepo : IBaseRepo<TEntity> where TEntity : Entity
+    public abstract class BasePage<TView, TEntity, TRepo> : PageModel where TView : UniqueView where TRepo : IBaseRepo<TEntity> where TEntity : UniqueEntity
     {
         private readonly TRepo repo;
         protected abstract TView toView(TEntity? entity);

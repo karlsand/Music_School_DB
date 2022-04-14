@@ -15,9 +15,10 @@ namespace Music_School_DB.Infra.Initializers
                 foreach (CultureInfo cul in CultureInfo.GetCultures(CultureTypes.SpecificCultures))
                 {
                     var c = new RegionInfo(new CultureInfo(cul.Name, false).LCID);
-                    if (l.FirstOrDefault(x => x.ID == c.ThreeLetterISORegionName) is not null) continue;
-                    if (string.IsNullOrWhiteSpace(c.ThreeLetterISORegionName)) continue;
-                    var d = createCountry(c.ThreeLetterISORegionName, c.NativeName, c.EnglishName);
+                    var id = c.ThreeLetterISORegionName;
+                    if (!isCorrectIsoCode(id)) continue;
+                    if (l.FirstOrDefault(x => x.ID == id) is not null) continue;
+                    var d = createCountry(id, c.NativeName, c.EnglishName);
                     l.Add(d);
                 }
                 return l; 
@@ -25,8 +26,8 @@ namespace Music_School_DB.Infra.Initializers
         }
         internal static CountryData createCountry(string code, string name, string description) => new()
         {
-            ID = code ?? EntityData.NewID,
-            Code = code ?? Entity.DefaultStr,
+            ID = code ?? UniqueData.NewID,
+            Code = code ?? UniqueEntity.DefaultStr,
             Name = name,
             Description = description,
         };

@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Music_School_DB.Facade.Party
 {
-    public sealed class InstructorView : BaseView
+    public sealed class InstructorView : UniqueView
     {
         [DisplayName("Instrument ID")] [Required] public string? InstrumentID { get; set; }
         [DisplayName("First name")] public string? FirstName { get; set; }
