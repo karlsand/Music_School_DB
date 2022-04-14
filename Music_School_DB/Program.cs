@@ -23,6 +23,8 @@ builder.Services.AddRazorPages();
 
 builder.Services.AddTransient<IInstructorsRepo, InstructorsRepo>();
 builder.Services.AddTransient<IStudentRepo, StudentRepo>();
+builder.Services.AddTransient<ICountriesRepo, CountriesRepo>();
+builder.Services.AddTransient<ICurrenciesRepo, CurrenciesRepo>();
 
 builder.Services.AddDbContext<Music_School_DBContext>(options =>
 

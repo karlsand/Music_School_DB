@@ -8,12 +8,8 @@ namespace Music_School_DB.Data.Party
 {
     public class CountryData : EntityData
     {
-        public string Code { get; set; }
-        public string? Description { get; set; }
+        public string Code { get; set; } = string.Empty;
         public string? Name { get; set; }
-    }
-    public class CurrencyData : EntityData
-    {
-
+        public string? Description { get; set; }
     }
 }

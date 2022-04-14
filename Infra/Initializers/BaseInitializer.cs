@@ -27,6 +27,7 @@ namespace Music_School_DB.Infra.Initializers
             new InstructorInitializer(db).Init();
             new StudentInitializer(db).Init();
             new CountryInitalizer(db).Init();
+            new CurrencyInitalizer(db).Init();
         }
     }
 }

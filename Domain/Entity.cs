@@ -4,8 +4,8 @@ namespace Music_School_DB.Domain
 {
     public abstract class Entity 
     {
-        private const string defaultStr = "Undefined";
-        protected static string getValue(string? v) => v ?? defaultStr;
+        public static string DefaultStr => "Undefined";
+        protected static string getValue(string? v) => v ?? DefaultStr;
     }
     public abstract class Entity<TData> : Entity where TData : EntityData, new()
     {

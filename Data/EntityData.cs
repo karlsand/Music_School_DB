@@ -2,6 +2,7 @@
 {
     public class EntityData
     {
-        public string ID { get; set; } = Guid.NewGuid().ToString();
+        public static string NewID => Guid.NewGuid().ToString();
+        public string ID { get; set; } = NewID;
     }
 }

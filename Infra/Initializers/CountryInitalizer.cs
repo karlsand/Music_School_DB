@@ -1,5 +1,7 @@
 ﻿using System.Globalization;
+using Music_School_DB.Data;
 using Music_School_DB.Data.Party;
+using Music_School_DB.Domain;
 
 namespace Music_School_DB.Infra.Initializers
 {
@@ -13,19 +15,20 @@ namespace Music_School_DB.Infra.Initializers
                 foreach (CultureInfo cul in CultureInfo.GetCultures(CultureTypes.SpecificCultures))
                 {
                     var c = new RegionInfo(new CultureInfo(cul.Name, false).LCID);
+                    if (l.FirstOrDefault(x => x.ID == c.ThreeLetterISORegionName) is not null) continue;
+                    if (string.IsNullOrWhiteSpace(c.ThreeLetterISORegionName)) continue;
                     var d = createCountry(c.ThreeLetterISORegionName, c.NativeName, c.EnglishName);
-                    if (l.FirstOrDefault(x => x.ID == d.ID) is not null) continue;
                     l.Add(d);
                 }
                 return l; 
             } 
         }
-        internal static CountryData createCountry(string code, string description, string name) => new()
+        internal static CountryData createCountry(string code, string name, string description) => new()
         {
-            ID = code,
-            Code = code,
-            Description = description,
+            ID = code ?? EntityData.NewID,
+            Code = code ?? Entity.DefaultStr,
             Name = name,
+            Description = description,
         };
     }
 }
