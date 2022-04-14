@@ -8,6 +8,7 @@ namespace Music_School_DB.Infra
         public MSDb(DbContextOptions<MSDb> options) : base(options) { }
         public DbSet<InstructorData>? Instructors { get; set; }
         public DbSet<StudentData>? Students { get;  set; }
+        public DbSet<CountryData>? Countries { get; set; }
 
         protected override void OnModelCreating(ModelBuilder b)
         {
@@ -19,6 +20,7 @@ namespace Music_School_DB.Infra
             string s = "Music_School_DB";
             _ = (b?.Entity<InstructorData>()?.ToTable(nameof(Instructors), s));
             _ = (b?.Entity<StudentData>()?.ToTable(nameof(Students), s));
+            _ = (b?.Entity<CountryData>()?.ToTable(nameof(Countries), s));
         }
     }
 }
