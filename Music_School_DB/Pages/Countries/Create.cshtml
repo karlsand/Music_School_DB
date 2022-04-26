@@ -1,9 +1,10 @@
 ﻿@page
-@model Music_School_DB.Pages.CountriesPage
+@model Music_School_DB.Pages.Party.CountriesPage
 @using Music_School_DB.Pages.Extensions
 @{
     Layout = "_Create";
 }
 <body>
-      <partial name= "_EditCountry"/>
+    @Html.MyEditorFor(x => x.Item.ID)  
+    <partial name= "_EditCountry"/>
 </body>      

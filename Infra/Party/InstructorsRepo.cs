@@ -7,5 +7,17 @@ namespace Music_School_DB.Infra.Party
     {
         public InstructorsRepo(MSDb? db) : base(db, db?.Instructors) { }
         protected override Instructor toDomain(InstructorData d) => new(d);
+        internal override IQueryable<InstructorData> addFilter(IQueryable<InstructorData> q)
+        {
+            var y = CurrentFilter;
+            if (string.IsNullOrWhiteSpace(y)) return q;
+            return q.Where(
+                x => x.ID.Contains(y)
+                || x.InstrumentID.Contains(y)
+                || x.FirstName.Contains(y)
+                || x.LastName.Contains(y)
+                || x.PhoneNr.Contains(y)
+                || x.Email.Contains(y));
+        }
     }
 }

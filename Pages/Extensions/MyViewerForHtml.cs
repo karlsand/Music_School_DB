@@ -11,7 +11,6 @@ namespace Music_School_DB.Pages.Extensions
             var s = htmlStrings(html, expression);
             return new HtmlContentBuilder(s);
         }
-
         private static List<object> htmlStrings<TModel, TResult>(IHtmlHelper<TModel> h, Expression<Func<TModel, TResult>> e)
         {
             var l = new List<object>();
