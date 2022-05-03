@@ -3,6 +3,8 @@ using Music_School_DB.Aids;
 using Music_School_DB.Data.Party;
 using Music_School_DB.Domain.Party;
 using Music_School_DB.Facade.Party;
+using System;
+using System.Reflection;
 
 namespace Music_School_DB.Tests.Facade.Party
 {
@@ -16,6 +18,7 @@ namespace Music_School_DB.Tests.Facade.Party
             var e = new Instructor(d);
             var v = new InstructorViewFactory().Create(e);
             isNotNull(v);
+            isNotNull(e);
             areEqual(v.ID, e.ID);
             areEqual(v.InstrumentID, e.InstrumentID);
             areEqual(v.FirstName, e.FirstName);
@@ -26,15 +29,11 @@ namespace Music_School_DB.Tests.Facade.Party
         }
         [TestMethod] public void CreateEntityTest() 
         {
-            var v = GetRandom.Value<InstructorView>();
+            var v = GetRandom.Value<InstructorView>() as InstructorView;
             var e = new InstructorViewFactory().Create(v);
             isNotNull(e);
-            areEqual(e.ID, v.ID);
-            areEqual(e.InstrumentID, v.InstrumentID);
-            areEqual(e.FirstName, v.FirstName);
-            areEqual(e.LastName, v.LastName);
-            areEqual(e.Email, v.Email);
-            areEqual(e.PhoneNr, v.PhoneNr);
+            isNotNull(v);
+            arePropertiesEqual(v, e);
             areNotEqual(e.ToString(), v.FullName);
         }
     }

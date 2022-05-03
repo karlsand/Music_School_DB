@@ -5,5 +5,6 @@
     Layout = "_Create";
 }
 <body>
-      <partial name= "_EditStudent"/>
+    @Html.MyEditorFor(x => x.Item.ID)  
+    <partial name= "_EditStudent"/>
 </body>      

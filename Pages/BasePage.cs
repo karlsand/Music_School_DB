@@ -7,7 +7,7 @@ using Music_School_DB.Facade;
 namespace Music_School_DB.Pages
 {
     public abstract class BasePage<TView, TEntity, TRepo> : PageModel
-        where TView : UniqueView 
+        where TView : UniqueView, new()
         where TEntity : UniqueEntity
         where TRepo : IBaseRepo<TEntity>
     {
@@ -15,8 +15,8 @@ namespace Music_School_DB.Pages
         protected abstract TView toView(TEntity? entity);
         protected abstract TEntity toObject(TView? item);
         protected abstract IActionResult redirectToIndex();
-        [BindProperty] public TView? Item { get; set; }
-        public IList<TView>? Items { get; set; }
+        [BindProperty] public TView Item { get; set; } = new TView();
+        public IList<TView> Items { get; set; } = new List<TView>();
         public string ItemID => Item?.ID ?? string.Empty;
         public BasePage(TRepo r) => repo = r;
         protected abstract void setAttributes(int idx, string? order, string? filter);
@@ -24,7 +24,7 @@ namespace Music_School_DB.Pages
             int idx, string? order, string? filter, bool removeKeys = false)
         {
             setAttributes(idx, order, filter);
-            if(removeKeys) removeKey(nameof(order), nameof(filter));
+            if (removeKeys) removeKey(nameof(order), nameof(filter));
             return await f();
         }
         protected abstract Task<IActionResult> postCreateAsync();
@@ -38,7 +38,7 @@ namespace Music_School_DB.Pages
         {
             foreach(var key in keys ?? Array.Empty<string>())
             {
-                Safe.Run(() => ModelState.Remove(key));
+                _ = Safe.Run(() => ModelState.Remove(key));
             }
         }
         public IActionResult OnGetCreate(int idx = 0, string? order = null, string? filter = null)

@@ -12,6 +12,7 @@ namespace Music_School_DB.Domain.Party
         public string LastName => getValue(Data?.LastName);
         public string Email => getValue(Data?.Email);
         public string PhoneNr => getValue(Data?.PhoneNr);
+        public string CoB => getValue(Data?.CoB);
         public override string ToString() => $"{FirstName} {LastName} ({Email}, {PhoneNr})";
     }
 }

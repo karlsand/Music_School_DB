@@ -79,6 +79,8 @@ namespace Music_School_DB.Tests.Aids
         {
             var x = GetRandom.Value<InstructorData>() as InstructorData;
             var y = GetRandom.Value<InstructorData>() as InstructorData;
+            isNotNull(x);
+            isNotNull(y);
             areNotEqual(x.ID, y.ID, nameof(x.ID));
             areNotEqual(x.InstrumentID, y.InstrumentID, nameof(x.InstrumentID));
             areNotEqual(x.FirstName, y.FirstName, nameof(x.FirstName));

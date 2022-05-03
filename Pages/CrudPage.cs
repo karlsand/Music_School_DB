@@ -5,7 +5,7 @@ using Music_School_DB.Facade;
 namespace Music_School_DB.Pages
 {
     public abstract class CrudPage<TView, TEntity, TRepo> : BasePage<TView, TEntity, TRepo>
-        where TView : UniqueView
+        where TView : UniqueView, new()
         where TEntity : UniqueEntity
         where TRepo : ICrudRepo<TEntity>
     {
@@ -34,13 +34,13 @@ namespace Music_School_DB.Pages
         protected override async Task<IActionResult> postCreateAsync()
         {
             if (!ModelState.IsValid) return Page();
-            await repo.AddAsync(toObject(Item));
+            _ = await repo.AddAsync(toObject(Item));
             return redirectToIndex();
         }
         protected override async Task<IActionResult> postDeleteAsync(string id)
         {
             if (id == null) return NotFound();
-            await repo.DeleteAsync(id);
+            _ = await repo.DeleteAsync(id);
             return redirectToIndex();
         }
         protected override async Task<IActionResult> postEditAsync()

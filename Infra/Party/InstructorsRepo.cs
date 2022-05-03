@@ -10,14 +10,16 @@ namespace Music_School_DB.Infra.Party
         internal override IQueryable<InstructorData> addFilter(IQueryable<InstructorData> q)
         {
             var y = CurrentFilter;
-            if (string.IsNullOrWhiteSpace(y)) return q;
-            return q.Where(
-                x => x.ID.Contains(y)
-                || x.InstrumentID.Contains(y)
-                || x.FirstName.Contains(y)
-                || x.LastName.Contains(y)
-                || x.PhoneNr.Contains(y)
-                || x.Email.Contains(y));
+            return string.IsNullOrWhiteSpace(y)
+                ? q
+                : q.Where(
+                x => contains(x.ID, y)
+                || contains(x.InstrumentID, y)
+                || contains(x.FirstName, y)
+                || contains(x.LastName, y)
+                || contains(x.PhoneNr, y)
+                || contains(x.Email, y)
+                || contains(x.CoB, y));
         }
     }
 }

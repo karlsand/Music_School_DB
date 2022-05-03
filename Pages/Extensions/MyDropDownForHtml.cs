@@ -4,14 +4,14 @@ using System.Linq.Expressions;
 
 namespace Music_School_DB.Pages.Extensions
 {
-    public static class MyEditorForHtml
+    public static class MyDropDownForHtml
     {
-        public static IHtmlContent MyEditorFor<TModel, TResult> (this IHtmlHelper<TModel> html, Expression<Func<TModel, TResult>> e)
+        public static IHtmlContent MyDropDownFor<TModel, TResult>(this IHtmlHelper<TModel> html, Expression<Func<TModel, TResult>> e, IEnumerable<SelectListItem> list)
         {
-            var s = htmlStrings(html, e);
+            var s = htmlStrings(html, e, list);
             return new HtmlContentBuilder(s);
         }
-        private static List<object> htmlStrings<TModel, TResult>(IHtmlHelper<TModel> h, Expression<Func<TModel, TResult>> e)
+        private static List<object> htmlStrings<TModel, TResult>(IHtmlHelper<TModel> h, Expression<Func<TModel, TResult>> e, IEnumerable<SelectListItem> list)
         {
             var l = new List<object>
             {
@@ -20,7 +20,7 @@ namespace Music_School_DB.Pages.Extensions
                 h.LabelFor(e, null, new { @class = "control-label" }),
                 new HtmlString("</dd>"),
                 new HtmlString("<dd class=\"col-sm-10\">"),
-                h.EditorFor(e, new { htmlAttributes = new { @class = "form-control" } }),
+                h.DropDownListFor(e, list, new { @class = "form-control" }),
                 h.ValidationMessageFor(e, null, new { @class = "text-danger" }),
                 new HtmlString("</dd>"),
                 new HtmlString("</dl>")

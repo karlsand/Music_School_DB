@@ -1,4 +1,5 @@
 ﻿using Music_School_DB.Aids;
+using System;
 using System.Diagnostics;
 using System.Reflection;
 
@@ -25,8 +26,8 @@ namespace Music_School_DB.Tests
             areEqual(canWrite, !isReadOnly);
             return canWrite;
         }
-        private static T random<T>() => GetRandom.Value<T>();
-        private string getCallingMember(string memberName)
+        private static T? random<T>() => GetRandom.Value<T>();
+        private static string getCallingMember(string memberName)
         {
             var s = new StackTrace();
             var isNext = false;
@@ -38,6 +39,22 @@ namespace Music_School_DB.Tests
                 if (n == memberName) isNext = true;
             }
             return string.Empty;
+        }
+        internal protected static void arePropertiesEqual(object x, object y)
+        {
+            var e = Array.Empty<PropertyInfo>();
+            var px = x?.GetType()?.GetProperties() ?? e;
+            var hasProperties = false;
+            foreach (var p in px)
+            {
+                var a = p.GetValue(x, null);
+                var py = y?.GetType()?.GetProperty(p.Name);
+                if (py is null) continue;
+                var b = py?.GetValue(y, null);
+                areEqual(a, b);
+                hasProperties = true;
+            }
+            isTrue(hasProperties, $"No properties found for {x}");
         }
     }
 }

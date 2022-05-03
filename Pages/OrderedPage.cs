@@ -4,7 +4,7 @@ using Music_School_DB.Facade;
 namespace Music_School_DB.Pages
 {
     public abstract class OrderedPage<TView, TEntity, TRepo> : FilteredPage<TView, TEntity, TRepo>
-        where TView : UniqueView
+        where TView : UniqueView, new()
         where TEntity : UniqueEntity
         where TRepo : IOrderedRepo<TEntity>
     {

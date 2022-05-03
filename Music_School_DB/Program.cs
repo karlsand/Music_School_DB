@@ -26,10 +26,6 @@ builder.Services.AddTransient<IStudentRepo, StudentRepo>();
 builder.Services.AddTransient<ICountriesRepo, CountriesRepo>();
 builder.Services.AddTransient<ICurrenciesRepo, CurrenciesRepo>();
 
-builder.Services.AddDbContext<Music_School_DBContext>(options =>
-
-    options.UseSqlServer(builder.Configuration.GetConnectionString("Music_School_DBContext")));
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

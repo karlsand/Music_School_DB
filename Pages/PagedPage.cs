@@ -2,11 +2,12 @@
 using Music_School_DB.Aids;
 using Music_School_DB.Domain;
 using Music_School_DB.Facade;
+using System.ComponentModel;
 
 namespace Music_School_DB.Pages
 {
     public abstract class PagedPage<TView, TEntity, TRepo> : OrderedPage<TView, TEntity, TRepo>, IPageModel, IIndexModel<TView>
-        where TView : UniqueView
+        where TView : UniqueView, new()
         where TEntity : UniqueEntity
         where TRepo : IPagedRepo<TEntity>
     {
@@ -28,11 +29,17 @@ namespace Music_School_DB.Pages
         protected override IActionResult redirectToIndex() => RedirectToPage("./Index", "Index",
             new { pageIndex = PageIndex, currentFilter = CurrentFilter, sortOrder = CurrentOrder, });
         public virtual string[] IndexColumns => Array.Empty<string>();
-        public object? GetValue(string name, TView v)
+        public virtual object? GetValue(string name, TView v)
             => Safe.Run(() =>
             {
                 var pi = v?.GetType()?.GetProperty(name);
-                return pi == null ? null : pi.GetValue(v);
+                return pi?.GetValue(v);
             }, null);
+        public string? DisplayName(string name) => Safe.Run(() =>
+        {
+            var p = typeof(TView).GetProperty(name);
+            var a = p?.CustomAttributes?.FirstOrDefault(x => x.AttributeType == typeof(DisplayNameAttribute));
+            return a?.ConstructorArguments[0].Value?.ToString() ?? name;
+        }, name);
     }
 }

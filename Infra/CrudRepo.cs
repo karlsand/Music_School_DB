@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Music_School_DB.Data;
 using Music_School_DB.Domain;
+using System.Linq;
 
 namespace Music_School_DB.Infra
 {
@@ -15,6 +16,13 @@ namespace Music_School_DB.Infra
         public override bool Add(TDomain obj) => AddAsync(obj).GetAwaiter().GetResult();
         public override bool Delete(string id) => DeleteAsync(id).GetAwaiter().GetResult();
         public override List<TDomain> Get() => GetAsync().GetAwaiter().GetResult();
+        public override List<TDomain> GetAll<TKey>(Func<TDomain, TKey>? orderBy = null)
+        {
+            var r = new List<TDomain>();
+            if (set is null) return r;
+            foreach (var d in set) r.Add(toDomain(d));
+            return (orderBy is null)? r : r.OrderBy(orderBy).ToList();
+        } 
         public override bool Update(TDomain obj) => UpdateAsync(obj).GetAwaiter().GetResult();
         public override TDomain Get(string id) => GetAsync(id).GetAwaiter().GetResult();
         public override async Task<bool> AddAsync(TDomain obj)
@@ -43,7 +51,7 @@ namespace Music_School_DB.Infra
             try
             {
                 var query = createSql();
-                var list = await runSql(query);
+                var list = await CrudRepo<TDomain, TData>.runSql(query);
                 var items = new List<TDomain>();
                 foreach (var d in list)
                 {
@@ -54,7 +62,7 @@ namespace Music_School_DB.Infra
             } catch { return new List<TDomain>(); }
         }
         internal protected virtual IQueryable<TData> createSql() => from s in set select s;
-        internal async Task<List<TData>> runSql(IQueryable<TData> query) => await query.AsNoTracking().ToListAsync();
+        internal static async Task<List<TData>> runSql(IQueryable<TData> query) => await query.AsNoTracking().ToListAsync();
         public override async Task<TDomain> GetAsync(string id)
         {
             try

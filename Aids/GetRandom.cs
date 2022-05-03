@@ -7,9 +7,7 @@ namespace Music_School_DB.Aids
         private static void minFirst<T>(ref T min, ref T max) where T : IComparable<T>
         {
             if (min.CompareTo(max) < 0) return;
-            var v = min;
-            min = max;
-            max = v;
+            (max, min) = (min, max);
         }
         public static int Int32(int? min = null, int? max = null)
         {
@@ -30,7 +28,7 @@ namespace Music_School_DB.Aids
             var minVal = min ?? -1000.0;
             var maxVal = max ?? 1000.0;
             minFirst(ref minVal,ref maxVal);
-            return minVal + Random.Shared.NextDouble() * (maxVal - minVal);
+            return minVal + (Random.Shared.NextDouble() * (maxVal - minVal));
         }
         public static char Char(char min = char.MinValue, char max = char.MaxValue) => (char)Int32(min, max);
         public static bool Bool() => Int32() % 2 == 0;
@@ -83,7 +81,7 @@ namespace Music_School_DB.Aids
             else if (t == typeof(string)) return String();
             return null;
         }
-        private static T tryGetObject<T>()
+        private static T? tryGetObject<T>()
         {
             var o = tryCreate<T>();
             foreach(var pi in o?.GetType()?.GetProperties() ?? Array.Empty<PropertyInfo>())
@@ -94,10 +92,10 @@ namespace Music_School_DB.Aids
             }
             return o;
         }
-        private static T tryCreate<T>()
+        private static T? tryCreate<T>() => Safe.Run(() =>
         {
             var c = typeof(T).GetConstructor(Array.Empty<Type>());
-            return (T) c?.Invoke(null);
-        }
+            return (c?.Invoke(null) is T t) ? t : default;
+        });
     }
 }
