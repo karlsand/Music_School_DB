@@ -12,7 +12,7 @@ using Music_School_DB.Data;
 namespace Music_School_DB.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220503140636_initial")]
+    [Migration("20220504170937_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -292,6 +292,22 @@ namespace Music_School_DB.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Instructors", "Music_School_DB");
+                });
+
+            modelBuilder.Entity("Music_School_DB.Data.Party.InstrumentData", b =>
+                {
+                    b.Property<string>("ID")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Classification")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("InstrumentName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Instruments", "Music_School_DB");
                 });
 
             modelBuilder.Entity("Music_School_DB.Data.Party.StudentData", b =>

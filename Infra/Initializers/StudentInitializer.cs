@@ -22,9 +22,9 @@ namespace Music_School_DB.Infra.Initializers
         }
         protected override IEnumerable<StudentData> getEntities => new[]
         {
-            createStudent("4321", "1", "321", "Peeter", "Peen", "654321", "peeter.p@gmail.com", "EST"),
-            createStudent("5432", "2", "432", "Jaak", "Jaanus", "654221", "jaak.j@gmail.com", "EST"),
-            createStudent("6543", "3", "543", "Kalev", "Kuld", "653321", "kalev.k@gmail.com", "EST"),
+            createStudent("4321", "1", "1", "Peeter", "Peen", "654321", "peeter.p@gmail.com", "EST"),
+            createStudent("5432", "2", "2", "Jaak", "Jaanus", "654221", "jaak.j@gmail.com", "EST"),
+            createStudent("6543", "3", "3", "Kalev", "Kuld", "653321", "kalev.k@gmail.com", "EST"),
         };
     }
 }

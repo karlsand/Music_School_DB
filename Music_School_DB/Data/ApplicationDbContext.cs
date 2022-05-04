@@ -12,7 +12,7 @@ namespace Music_School_DB.Data
             base.OnModelCreating(b);
             initializeTables(b);
         }
-        private void initializeTables(ModelBuilder b)
+        private static void initializeTables(ModelBuilder b)
         {
             MSDb.InitializeTables(b);
         }

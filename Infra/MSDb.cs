@@ -7,6 +7,7 @@ namespace Music_School_DB.Infra
     {
         public MSDb(DbContextOptions<MSDb> options) : base(options) { }
         public DbSet<InstructorData>? Instructors { get; internal set; }
+        public DbSet<InstrumentData>? Instruments { get; internal set; }
         public DbSet<StudentData>? Students { get; internal set; }
         public DbSet<CountryData>? Countries { get; internal set; }
         public DbSet<CurrencyData>? Currencies { get; internal set; }
@@ -20,6 +21,7 @@ namespace Music_School_DB.Infra
         {
             string s = "Music_School_DB";
             _ = (b?.Entity<InstructorData>()?.ToTable(nameof(Instructors), s));
+            _ = (b?.Entity<InstrumentData>()?.ToTable(nameof(Instruments), s));
             _ = (b?.Entity<StudentData>()?.ToTable(nameof(Students), s));
             _ = (b?.Entity<CountryData>()?.ToTable(nameof(Countries), s));
             _ = (b?.Entity<CurrencyData>()?.ToTable(nameof(Currencies), s));

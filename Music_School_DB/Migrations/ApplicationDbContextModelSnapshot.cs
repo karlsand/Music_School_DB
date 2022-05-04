@@ -292,6 +292,22 @@ namespace Music_School_DB.Migrations
                     b.ToTable("Instructors", "Music_School_DB");
                 });
 
+            modelBuilder.Entity("Music_School_DB.Data.Party.InstrumentData", b =>
+                {
+                    b.Property<string>("ID")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Classification")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("InstrumentName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Instruments", "Music_School_DB");
+                });
+
             modelBuilder.Entity("Music_School_DB.Data.Party.StudentData", b =>
                 {
                     b.Property<string>("ID")

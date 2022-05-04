@@ -100,6 +100,20 @@ namespace Music_School_DB.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Instruments",
+                schema: "Music_School_DB",
+                columns: table => new
+                {
+                    ID = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    InstrumentName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Classification = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Instruments", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Students",
                 schema: "Music_School_DB",
                 columns: table => new
@@ -291,6 +305,10 @@ namespace Music_School_DB.Migrations
 
             migrationBuilder.DropTable(
                 name: "Instructors",
+                schema: "Music_School_DB");
+
+            migrationBuilder.DropTable(
+                name: "Instruments",
                 schema: "Music_School_DB");
 
             migrationBuilder.DropTable(

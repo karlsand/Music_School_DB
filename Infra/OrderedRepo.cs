@@ -23,7 +23,7 @@ namespace Music_School_DB.Infra
             return q.OrderBy(e);
         }
         internal bool isDescending => CurrentOrder?.EndsWith(DescendingString) ?? false;
-        internal bool isSameProperty(string s) => (string.IsNullOrEmpty(s) ? false : (CurrentOrder?.StartsWith(s) ?? false));
+        internal bool isSameProperty(string s) => (!string.IsNullOrEmpty(s) && (CurrentOrder?.StartsWith(s) ?? false));
         internal string propertyName => CurrentOrder?.Replace(DescendingString, "") ?? "";
         internal PropertyInfo? propertyInfo => typeof(TData).GetProperty(propertyName);
         internal Expression<Func<TData, object>>? lambdaExpression

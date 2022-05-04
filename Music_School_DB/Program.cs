@@ -22,6 +22,7 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
 builder.Services.AddRazorPages();
 
 builder.Services.AddTransient<IInstructorsRepo, InstructorsRepo>();
+builder.Services.AddTransient<IInstrumentsRepo, InstrumentsRepo>();
 builder.Services.AddTransient<IStudentRepo, StudentRepo>();
 builder.Services.AddTransient<ICountriesRepo, CountriesRepo>();
 builder.Services.AddTransient<ICurrenciesRepo, CurrenciesRepo>();

@@ -1,0 +1,10 @@
+﻿@model Music_School_DB.Pages.Party.InstrumentsPage
+@using Music_School_DB.Pages.Extensions
+
+@{
+    Layout = "_Create";
+}
+<body>
+    @Html.MyEditorFor(x => x.Item.ID)  
+    <partial name= "_EditInstrument"/>
+</body>      

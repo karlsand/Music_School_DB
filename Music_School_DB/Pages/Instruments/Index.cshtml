@@ -1,0 +1,11 @@
+﻿@page
+@using Music_School_DB.Pages.Extensions
+@model Music_School_DB.Pages.Party.InstrumentsPage
+
+@{
+    Layout = "_Index";
+}
+
+<body>
+    @Html.ShowTable(Model.Items)
+</body>
