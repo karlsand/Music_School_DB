@@ -5,7 +5,7 @@ namespace Music_School_DB.Infra.Initializers
     public sealed class StudentInitializer : BaseInitializer<StudentData>
     {
         public StudentInitializer(MSDb? db) : base(db, db?.Students) { }
-        internal static StudentData createStudent(string id, string instructorId, string instrumentId, string firstName, string lastName, string phoneNr, string email, string cob)
+        internal static StudentData createStudent(string id, string instructorId, string instrumentId, string firstName, string lastName, string phoneNr, string email, string CoBID)
         {
             var student = new StudentData
             {
@@ -16,7 +16,7 @@ namespace Music_School_DB.Infra.Initializers
                 LastName = lastName,
                 PhoneNr = phoneNr,
                 Email = email,
-                CoB = cob,
+                CoBID = CoBID,
             };
             return student;
         }

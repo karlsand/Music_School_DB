@@ -1,0 +1,8 @@
+﻿@model Music_School_DB.Pages.Party.InstructorStudentsPage
+@using Music_School_DB.Pages.Extensions
+
+@Html.MyViewerFor(x => x.Item.InstructorID, Model.InstructorName(Model.Item.InstructorID))
+@Html.MyViewerFor(x => x.Item.StudentID, Model.StudentName(Model.Item.StudentID))
+@Html.MyViewerFor(x => x.Item.Code)
+@Html.MyViewerFor(x => x.Item.Name)
+@Html.MyViewerFor(x => x.Item.Description)

@@ -224,6 +224,34 @@ namespace Music_School_DB.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("Music_School_DB.Data.Party.CountryCurrencyData", b =>
+                {
+                    b.Property<string>("ID")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CountryID")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CurrencyID")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("CountryCurrency", "Music_School_DB");
+                });
+
             modelBuilder.Entity("Music_School_DB.Data.Party.CountryData", b =>
                 {
                     b.Property<string>("ID")
@@ -269,7 +297,7 @@ namespace Music_School_DB.Migrations
                     b.Property<string>("ID")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("CoB")
+                    b.Property<string>("CoBID")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
@@ -290,6 +318,34 @@ namespace Music_School_DB.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Instructors", "Music_School_DB");
+                });
+
+            modelBuilder.Entity("Music_School_DB.Data.Party.InstructorStudentsData", b =>
+                {
+                    b.Property<string>("ID")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("InstructorID")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("StudentID")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("InstructorStudents", "Music_School_DB");
                 });
 
             modelBuilder.Entity("Music_School_DB.Data.Party.InstrumentData", b =>
@@ -313,7 +369,7 @@ namespace Music_School_DB.Migrations
                     b.Property<string>("ID")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("CoB")
+                    b.Property<string>("CoBID")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")

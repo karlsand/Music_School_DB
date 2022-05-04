@@ -7,8 +7,8 @@ namespace Music_School_DB.Facade.Party
 {
     public sealed class InstrumentView : UniqueView
     {
-        [DisplayName("Instrument name")] public string? InstrumentName { get; set; }
-        [DisplayName("Classification")] public string? Classification { get; set; }
+        [Required][DisplayName("Instrument name")] public string? InstrumentName { get; set; }
+        [Required][DisplayName("Classification")] public string? Classification { get; set; }
     }
     public sealed class InstrumentViewFactory : BaseViewFactory<InstrumentView, Instrument, InstrumentData>
     {

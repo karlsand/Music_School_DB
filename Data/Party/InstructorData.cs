@@ -7,6 +7,6 @@
         public string? LastName { get; set; }
         public string? Email { get; set; }
         public string? PhoneNr { get; set; }
-        public string? CoB { get; set; }
+        public string? CoBID { get; set; }
     }
 }

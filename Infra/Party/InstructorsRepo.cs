@@ -19,7 +19,7 @@ namespace Music_School_DB.Infra.Party
                 || contains(x.LastName, y)
                 || contains(x.PhoneNr, y)
                 || contains(x.Email, y)
-                || contains(x.CoB, y));
+                || contains(x.CoBID, y));
         }
     }
 }

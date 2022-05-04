@@ -11,6 +11,8 @@ namespace Music_School_DB.Infra
         public DbSet<StudentData>? Students { get; internal set; }
         public DbSet<CountryData>? Countries { get; internal set; }
         public DbSet<CurrencyData>? Currencies { get; internal set; }
+        public DbSet<CountryCurrencyData>? CountryCurrency { get; internal set; }
+        public DbSet<InstructorStudentsData>? InstructorStudents { get; internal set; }
 
         protected override void OnModelCreating(ModelBuilder b)
         {
@@ -25,6 +27,8 @@ namespace Music_School_DB.Infra
             _ = (b?.Entity<StudentData>()?.ToTable(nameof(Students), s));
             _ = (b?.Entity<CountryData>()?.ToTable(nameof(Countries), s));
             _ = (b?.Entity<CurrencyData>()?.ToTable(nameof(Currencies), s));
+            _ = (b?.Entity<CountryCurrencyData>()?.ToTable(nameof(CountryCurrency), s));
+            _ = (b?.Entity<InstructorStudentsData>()?.ToTable(nameof(InstructorStudents), s));
         }
     }
 }

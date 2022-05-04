@@ -3,7 +3,7 @@ using Music_School_DB.Domain.Party;
 
 namespace Music_School_DB.Infra.Party
 {
-    public class StudentRepo : Repo<Student, StudentData>, IStudentRepo
+    public class StudentRepo : Repo<Student, StudentData>, IStudentsRepo
     {
         public StudentRepo(MSDb? db) : base(db, db?.Students) { }
         protected override Student toDomain(StudentData d) => new(d);
@@ -20,7 +20,7 @@ namespace Music_School_DB.Infra.Party
                 || contains(x.LastName, y)
                 || contains(x.PhoneNr, y)
                 || contains(x.Email, y)
-                || contains(x.CoB, y));
+                || contains(x.CoBID, y));
         }
     }
 }

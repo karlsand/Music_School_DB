@@ -7,12 +7,12 @@ namespace Music_School_DB.Facade.Party
 {
     public sealed class InstructorView : UniqueView
     {
-        [DisplayName("Instrument ID")] [Required] public string? InstrumentID { get; set; }
-        [DisplayName("First name")] [Required] public string? FirstName { get; set; }
-        [DisplayName("Last name")] [Required] public string? LastName { get; set; }
-        [DisplayName("Email")] [Required] public string? Email { get; set; }
-        [DisplayName("Phone number")] [Required] public string? PhoneNr { get; set; }
-        [DisplayName("Country of birth")] [Required] public string? CoB { get; set; }
+        [Required][DisplayName("Instrument ID")] public string? InstrumentID { get; set; }
+        [Required][DisplayName("First name")] public string? FirstName { get; set; }
+        [Required][DisplayName("Last name")] public string? LastName { get; set; }
+        [Required][DisplayName("Email")] public string? Email { get; set; }
+        [Required][DisplayName("Phone number")] public string? PhoneNr { get; set; }
+        [Required][DisplayName("Country of birth")] public string? CoBID { get; set; }
         [DisplayName("Full information")] public string? FullName { get; set; }
     }
     public sealed class InstructorViewFactory : BaseViewFactory<InstructorView, Instructor, InstructorData>

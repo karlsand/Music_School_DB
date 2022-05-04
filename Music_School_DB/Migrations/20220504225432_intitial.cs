@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Music_School_DB.Migrations
 {
-    public partial class initial : Migration
+    public partial class intitial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -67,6 +67,23 @@ namespace Music_School_DB.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "CountryCurrency",
+                schema: "Music_School_DB",
+                columns: table => new
+                {
+                    ID = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    CountryID = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CurrencyID = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Code = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CountryCurrency", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Currencies",
                 schema: "Music_School_DB",
                 columns: table => new
@@ -92,11 +109,28 @@ namespace Music_School_DB.Migrations
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PhoneNr = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CoB = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    CoBID = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Instructors", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "InstructorStudents",
+                schema: "Music_School_DB",
+                columns: table => new
+                {
+                    ID = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    InstructorID = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    StudentID = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Code = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_InstructorStudents", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
@@ -125,7 +159,7 @@ namespace Music_School_DB.Migrations
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PhoneNr = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CoB = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    CoBID = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -300,11 +334,19 @@ namespace Music_School_DB.Migrations
                 schema: "Music_School_DB");
 
             migrationBuilder.DropTable(
+                name: "CountryCurrency",
+                schema: "Music_School_DB");
+
+            migrationBuilder.DropTable(
                 name: "Currencies",
                 schema: "Music_School_DB");
 
             migrationBuilder.DropTable(
                 name: "Instructors",
+                schema: "Music_School_DB");
+
+            migrationBuilder.DropTable(
+                name: "InstructorStudents",
                 schema: "Music_School_DB");
 
             migrationBuilder.DropTable(

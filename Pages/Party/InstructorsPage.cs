@@ -4,10 +4,10 @@ using Music_School_DB.Facade.Party;
 
 namespace Music_School_DB.Pages.Party
 {
-    public class InstructrosPage : PagedPage<InstructorView, Instructor, IInstructorsRepo>
+    public class InstructorsPage : PagedPage<InstructorView, Instructor, IInstructorsRepo>
     {
         private readonly ICountriesRepo countries;
-        public InstructrosPage(IInstructorsRepo r, ICountriesRepo c) : base(r) => countries = c;
+        public InstructorsPage(IInstructorsRepo r, ICountriesRepo c) : base(r) => countries = c;
         protected override Instructor toObject(InstructorView? item) => new InstructorViewFactory().Create(item);
         protected override InstructorView toView(Instructor? entity) => new InstructorViewFactory().Create(entity);
         public override string[] IndexColumns { get; } = new[] {
@@ -17,7 +17,7 @@ namespace Music_School_DB.Pages.Party
             nameof(InstructorView.LastName),
             nameof(InstructorView.Email),
             nameof(InstructorView.PhoneNr),
-            nameof(InstructorView.CoB),
+            nameof(InstructorView.CoBID),
         };
         public IEnumerable<SelectListItem> Countries
             => countries?.GetAll(x => x.Name)?.Select(x => new SelectListItem(x.Name, x.ID)) ?? new List<SelectListItem>();
@@ -26,7 +26,7 @@ namespace Music_School_DB.Pages.Party
         public override object? GetValue(string name, InstructorView v)
         {
             var r = base.GetValue(name, v);
-            return name == nameof(InstructorView.CoB) ? CountryName(r as string) : r;
+            return name == nameof(InstructorView.CoBID) ? CountryName(r as string) : r;
         }
     }
 }

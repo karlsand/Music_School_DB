@@ -1,0 +1,8 @@
+﻿@model Music_School_DB.Pages.Party.CountryCurrencyPage
+@using Music_School_DB.Pages.Extensions
+
+@Html.MyDropDownFor(x => x.Item.CountryID, Model.Countries)
+@Html.MyDropDownFor(x => x.Item.CurrencyID, Model.Currencies)
+@Html.MyEditorFor(x => x.Item.Code)
+@Html.MyEditorFor(x => x.Item.Name)
+@Html.MyEditorFor(x => x.Item.Description)

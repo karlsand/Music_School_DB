@@ -1,4 +1,4 @@
-﻿@model Music_School_DB.Pages.Party.InstructrosPage
+﻿@model Music_School_DB.Pages.Party.InstructorsPage
 @using Music_School_DB.Pages.Extensions
 
 
@@ -9,5 +9,5 @@
 @Html.MyViewerFor(x => x.Item.LastName)
 @Html.MyViewerFor(x => x.Item.Email)
 @Html.MyViewerFor(x => x.Item.PhoneNr)
-@Html.MyViewerFor(x => x.Item.CoB, Model.CountryName(Model.Item.CoB))
+@Html.MyViewerFor(x => x.Item.CoBID, Model.CountryName(Model.Item.CoBID))
       
