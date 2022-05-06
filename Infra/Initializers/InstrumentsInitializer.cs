@@ -2,9 +2,9 @@
 
 namespace Music_School_DB.Infra.Initializers
 {
-    public sealed class InstrumentInitializer : BaseInitializer<InstrumentData>
+    public sealed class InstrumentsInitializer : BaseInitializer<InstrumentData>
     {
-        public InstrumentInitializer(MSDb? db) : base(db, db?.Instruments) { }
+        public InstrumentsInitializer(MSDb? db) : base(db, db?.Instruments) { }
         internal static InstrumentData createInstrument(string id, string instrumentName, string classification)
         {
             var instrument = new InstrumentData

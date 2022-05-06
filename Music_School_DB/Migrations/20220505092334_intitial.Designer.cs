@@ -12,7 +12,7 @@ using Music_School_DB.Data;
 namespace Music_School_DB.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220504225432_intitial")]
+    [Migration("20220505092334_intitial")]
     partial class intitial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -226,7 +226,7 @@ namespace Music_School_DB.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("Music_School_DB.Data.Party.CountryCurrencyData", b =>
+            modelBuilder.Entity("Music_School_DB.Data.Party.CountryCurrenciesData", b =>
                 {
                     b.Property<string>("ID")
                         .HasColumnType("nvarchar(450)");
@@ -251,7 +251,7 @@ namespace Music_School_DB.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("CountryCurrency", "Music_School_DB");
+                    b.ToTable("CountryCurrencies", "Music_School_DB");
                 });
 
             modelBuilder.Entity("Music_School_DB.Data.Party.CountryData", b =>

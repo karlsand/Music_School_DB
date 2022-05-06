@@ -5,14 +5,14 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Music_School_DB.Facade.Party
 {
-    public sealed class InstructorStudentsView : NamedView
+    public sealed class InstructorStudentView : NamedView
     {
         [Required][DisplayName("Instructor name")] public string? InstructorID { get; set; } = string.Empty;
         [Required][DisplayName("Student name")] public string? StudentID { get; set; } = string.Empty;
         [DisplayName("Use if needed")] public new string? Code { get; set; }
     }
-    public sealed class InstructorStudentsViewFactory : BaseViewFactory<InstructorStudentsView, InstructorStudents, InstructorStudentsData>
+    public sealed class InstructorStudentViewFactory : BaseViewFactory<InstructorStudentView, InstructorStudent, InstructorStudentData>
     {
-        protected override InstructorStudents toEntity(InstructorStudentsData d) => new(d);
+        protected override InstructorStudent toEntity(InstructorStudentData d) => new(d);
     }
 }

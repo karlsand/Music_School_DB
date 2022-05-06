@@ -13,9 +13,9 @@ namespace Music_School_DB.Infra.Party
             return string.IsNullOrWhiteSpace(y)
                 ? q
                 : q.Where(
-                x => contains(x.ID, y)
-                || contains(x.InstrumentName, y)
-                || contains(x.Classification, y));
+                x => x.ID.Contains(y)
+                || x.InstrumentName.Contains(y)
+                || x.Classification.Contains(y));
         }
     }
 }

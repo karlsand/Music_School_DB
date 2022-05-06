@@ -25,7 +25,7 @@ namespace Music_School_DB.Pages.Extensions
             foreach (var name in m.IndexColumns)
             {
                 l.Add(new HtmlString("<td>"));
-                l.Add(h.MyTabHdr(name));
+                l.Add(h.MyTabHdr(m.DisplayName(name)));
                 l.Add(new HtmlString("</td>"));
             }
             l.Add(new HtmlString("<th></th>"));

@@ -67,7 +67,7 @@ namespace Music_School_DB.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "CountryCurrency",
+                name: "CountryCurrencies",
                 schema: "Music_School_DB",
                 columns: table => new
                 {
@@ -80,7 +80,7 @@ namespace Music_School_DB.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CountryCurrency", x => x.ID);
+                    table.PrimaryKey("PK_CountryCurrencies", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
@@ -334,7 +334,7 @@ namespace Music_School_DB.Migrations
                 schema: "Music_School_DB");
 
             migrationBuilder.DropTable(
-                name: "CountryCurrency",
+                name: "CountryCurrencies",
                 schema: "Music_School_DB");
 
             migrationBuilder.DropTable(

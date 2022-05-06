@@ -2,9 +2,9 @@
 
 namespace Music_School_DB.Infra.Initializers
 {
-    public sealed class StudentInitializer : BaseInitializer<StudentData>
+    public sealed class StudentsInitializer : BaseInitializer<StudentData>
     {
-        public StudentInitializer(MSDb? db) : base(db, db?.Students) { }
+        public StudentsInitializer(MSDb? db) : base(db, db?.Students) { }
         internal static StudentData createStudent(string id, string instructorId, string instrumentId, string firstName, string lastName, string phoneNr, string email, string CoBID)
         {
             var student = new StudentData

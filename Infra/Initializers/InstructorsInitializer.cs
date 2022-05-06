@@ -2,9 +2,9 @@
 
 namespace Music_School_DB.Infra.Initializers
 {
-    public sealed class InstructorInitializer : BaseInitializer<InstructorData>
+    public sealed class InstructorsInitializer : BaseInitializer<InstructorData>
     {
-        public InstructorInitializer(MSDb? db) : base(db, db?.Instructors) { } 
+        public InstructorsInitializer(MSDb? db) : base(db, db?.Instructors) { } 
         internal static InstructorData createInstructor(string id, string instrumentId, string firstName, string lastName, string phoneNr, string email, string CoBID)
         {
             var instructor = new InstructorData
@@ -21,9 +21,9 @@ namespace Music_School_DB.Infra.Initializers
         }
         protected override IEnumerable<InstructorData> getEntities => new[]
         {
-            createInstructor("1234", "321", "Peeter", "Peen", "123456", "peeter.p@gmail.com", "EST"),
-            createInstructor("2345", "432", "Jaak", "Jaanus", "122456", "jaak.j@gmail.com", "EST"),
-            createInstructor("3456", "543", "Kalev", "Kuld", "123356", "kalev.k@gmail.com", "EST"),
+            createInstructor("1234", "1", "Peeter", "Peen", "123456", "peeter.p@gmail.com", "EST"),
+            createInstructor("2345", "2", "Jaak", "Jaanus", "122456", "jaak.j@gmail.com", "EST"),
+            createInstructor("3456", "3", "Kalev", "Kuld", "123356", "kalev.k@gmail.com", "EST"),
         };
     }
 }

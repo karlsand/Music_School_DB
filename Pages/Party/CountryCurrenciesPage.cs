@@ -4,11 +4,11 @@ using Music_School_DB.Facade.Party;
 
 namespace Music_School_DB.Pages.Party
 {
-    public class CountryCurrencyPage : PagedPage<CountryCurrencyView, CountryCurrency, ICountryCurrencyRepo>
+    public class CountryCurrenciesPage : PagedPage<CountryCurrencyView, CountryCurrency, ICountryCurrenciesRepo>
     {
         private readonly ICountriesRepo countries;
         private readonly ICurrenciesRepo currencies;
-        public CountryCurrencyPage(ICountryCurrencyRepo r, ICountriesRepo co, ICurrenciesRepo cu) : base(r)
+        public CountryCurrenciesPage(ICountryCurrenciesRepo r, ICountriesRepo co, ICurrenciesRepo cu) : base(r)
         {
             countries = co;
             currencies = cu;
@@ -16,7 +16,6 @@ namespace Music_School_DB.Pages.Party
         protected override CountryCurrency toObject(CountryCurrencyView? item) => new CountryCurrencyViewFactory().Create(item);
         protected override CountryCurrencyView toView(CountryCurrency? entity) => new CountryCurrencyViewFactory().Create(entity);
         public override string[] IndexColumns { get; } = new[] {
-            nameof(CountryCurrencyView.ID),
             nameof(CountryCurrencyView.Code),
             nameof(CountryCurrencyView.Name),
             nameof(CountryCurrencyView.CountryID),

@@ -2,7 +2,7 @@
 
 namespace Music_School_DB.Domain.Party
 {
-    public interface ICountryCurrencyRepo : IRepo<CountryCurrency> { }
+    public interface ICountryCurrenciesRepo : IRepo<CountryCurrency> { }
     public class CountryCurrency : NamedEntity<CountryCurrencyData>
     {
         public CountryCurrency() : this(new ()) { }

@@ -9,10 +9,9 @@ namespace Music_School_DB.Domain
     }
     public abstract class UniqueEntity<TData> : UniqueEntity where TData : UniqueData, new()
     {
-        private readonly TData data;
-        public TData Data => data;
+        public TData Data { get; }
         public UniqueEntity() : this(new TData()) { }
-        public UniqueEntity(TData d) => data = d;
+        public UniqueEntity(TData d) => Data = d;
         public string ID => getValue(Data?.ID);
     }
 }

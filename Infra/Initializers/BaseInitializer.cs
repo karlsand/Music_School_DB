@@ -21,15 +21,4 @@ namespace Music_School_DB.Infra.Initializers
         protected abstract IEnumerable<TData> getEntities { get; }
         internal static bool isCorrectIsoCode(string id) => !string.IsNullOrWhiteSpace(id) && char.IsLetter(id[0]);
     }
-    public static class MSDbInitializer
-    {
-        public static void Init(MSDb? db)
-        {
-            new InstructorInitializer(db).Init();
-            new InstrumentInitializer(db).Init();
-            new StudentInitializer(db).Init();
-            new CountryInitalizer(db).Init();
-            new CurrencyInitalizer(db).Init();
-        }
-    }
 }

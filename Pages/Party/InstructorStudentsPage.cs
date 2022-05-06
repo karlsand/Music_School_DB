@@ -4,7 +4,7 @@ using Music_School_DB.Facade.Party;
 
 namespace Music_School_DB.Pages.Party
 {
-    public class InstructorStudentsPage : PagedPage<InstructorStudentsView, InstructorStudents, IInstructorStudentsRepo>
+    public class InstructorStudentsPage : PagedPage<InstructorStudentView, InstructorStudent, IInstructorStudentsRepo>
     {
         private readonly IInstructorsRepo instructors;
         private readonly IStudentsRepo students;
@@ -13,15 +13,15 @@ namespace Music_School_DB.Pages.Party
             instructors = i;
             students = s;
         }
-        protected override InstructorStudents toObject(InstructorStudentsView? item) => new InstructorStudentsViewFactory().Create(item);
-        protected override InstructorStudentsView toView(InstructorStudents? entity) => new InstructorStudentsViewFactory().Create(entity);
+        protected override InstructorStudent toObject(InstructorStudentView? item) => new InstructorStudentViewFactory().Create(item);
+        protected override InstructorStudentView toView(InstructorStudent? entity) => new InstructorStudentViewFactory().Create(entity);
         public override string[] IndexColumns { get; } = new[] {
-            nameof(InstructorStudentsView.ID),
-            nameof(InstructorStudentsView.Code),
-            nameof(InstructorStudentsView.Name),
-            nameof(InstructorStudentsView.InstructorID),
-            nameof(InstructorStudentsView.StudentID),
-            nameof(InstructorStudentsView.Description),
+            nameof(InstructorStudentView.ID),
+            nameof(InstructorStudentView.Code),
+            nameof(InstructorStudentView.Name),
+            nameof(InstructorStudentView.InstructorID),
+            nameof(InstructorStudentView.StudentID),
+            nameof(InstructorStudentView.Description),
         };
         public IEnumerable<SelectListItem> Instructors
             => instructors?.GetAll(x => x.ToString())?.Select(x => new SelectListItem(x.ToString(), x.ID)) ?? new List<SelectListItem>();
@@ -31,11 +31,11 @@ namespace Music_School_DB.Pages.Party
             => Instructors?.FirstOrDefault(x => x.Value == (instructorID ?? string.Empty))?.Text ?? "Unspecified";
         public string StudentName(string? studentID = null)
             => Students?.FirstOrDefault(x => x.Value == (studentID ?? string.Empty))?.Text ?? "Unspecified";
-        public override object? GetValue(string name, InstructorStudentsView v)
+        public override object? GetValue(string name, InstructorStudentView v)
         {
             var r = base.GetValue(name, v);
-            return name == nameof(InstructorStudentsView.InstructorID) ? InstructorName(r as string) 
-                : name == nameof(InstructorStudentsView.StudentID) ? StudentName(r as string)
+            return name == nameof(InstructorStudentView.InstructorID) ? InstructorName(r as string) 
+                : name == nameof(InstructorStudentView.StudentID) ? StudentName(r as string)
                 : r;
         }
     }

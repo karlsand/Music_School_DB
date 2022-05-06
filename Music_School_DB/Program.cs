@@ -23,10 +23,10 @@ builder.Services.AddRazorPages();
 
 builder.Services.AddTransient<IInstructorsRepo, InstructorsRepo>();
 builder.Services.AddTransient<IInstrumentsRepo, InstrumentsRepo>();
-builder.Services.AddTransient<IStudentsRepo, StudentRepo>();
+builder.Services.AddTransient<IStudentsRepo, StudentsRepo>();
 builder.Services.AddTransient<ICountriesRepo, CountriesRepo>();
 builder.Services.AddTransient<ICurrenciesRepo, CurrenciesRepo>();
-builder.Services.AddTransient<ICountryCurrencyRepo, CountryCurrencyRepo>();
+builder.Services.AddTransient<ICountryCurrenciesRepo, CountryCurrenciesRepo>();
 builder.Services.AddTransient<IInstructorStudentsRepo, InstructorStudentsRepo>();
 
 var app = builder.Build();

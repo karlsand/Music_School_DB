@@ -13,7 +13,7 @@ namespace Music_School_DB.Facade.Party
         [Required][DisplayName("Last name")] public string? LastName { get; set; }
         [Required][DisplayName("Email")] public string? Email { get; set; }
         [Required][DisplayName("Phone number")] public string? PhoneNr { get; set; }
-        [DisplayName("Country of birth")] public string? CoBID { get; set; }
+        [Required][DisplayName("Country of birth")] public string? CoBID { get; set; }
     }
     public sealed class StudentViewFactory : BaseViewFactory<StudentView, Student, StudentData>
     {
