@@ -18,7 +18,7 @@ namespace Music_School_DB.Pages.Party
             nameof(StudentView.LastName),
             nameof(StudentView.Email),
             nameof(StudentView.PhoneNr),
-            nameof(StudentView.CoBID),
+            nameof(StudentView.CoBID)
         };
         public IEnumerable<SelectListItem> Countries 
             => countries?.GetAll(x => x.Name)?.Select(x => new SelectListItem(x.Name, x.ID)) ?? new List<SelectListItem>();

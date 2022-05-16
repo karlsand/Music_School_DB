@@ -20,7 +20,7 @@ namespace Music_School_DB.Pages.Party
             nameof(CountryCurrencyView.Name),
             nameof(CountryCurrencyView.CountryID),
             nameof(CountryCurrencyView.CurrencyID),
-            nameof(CountryCurrencyView.Description),
+            nameof(CountryCurrencyView.Description)
         };
         public IEnumerable<SelectListItem> Countries
             => countries?.GetAll(x => x.Name)?.Select(x => new SelectListItem(x.Name, x.ID)) ?? new List<SelectListItem>();

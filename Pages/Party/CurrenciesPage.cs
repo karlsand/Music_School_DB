@@ -12,7 +12,8 @@ namespace Music_School_DB.Pages.Party
             nameof(CurrencyView.ID),
             nameof(CurrencyView.Code),
             nameof(CurrencyView.Name),
-            nameof(CurrencyView.Description),
+            nameof(CurrencyView.Description)
         };
+        public List<Country?> Countries => toObject(Item).Countries;
     }
 }

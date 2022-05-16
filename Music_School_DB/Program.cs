@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Music_School_DB.Data;
+using Music_School_DB.Domain;
 using Music_School_DB.Domain.Party;
 using Music_School_DB.Infra;
 using Music_School_DB.Infra.Initializers;
@@ -45,6 +46,7 @@ else
 
 using (var scope = app.Services.CreateScope())
 {
+    GetRepo.SetService(app.Services);
     var db = scope.ServiceProvider.GetService<MSDb>();
     db?.Database?.EnsureCreated();
     MSDbInitializer.Init(db);

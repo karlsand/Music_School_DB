@@ -7,5 +7,9 @@ namespace Music_School_DB.Domain.Party
     {
         public Country() : this(new ()) { }
         public Country(CountryData d) : base(d) { }
+        public List<CountryCurrency> CountryCurrencies 
+            => GetRepo.Instance<ICountryCurrenciesRepo>()?.GetAll(x => x.CountryID)?.Where(x => x.CountryID == ID)?.ToList() ?? new List<CountryCurrency>();
+        public List<Currency?> Currencies
+            => CountryCurrencies.Select(x => x.Currency).ToList() ?? new List<Currency?>();
     }
 }

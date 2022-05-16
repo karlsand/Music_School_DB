@@ -11,7 +11,7 @@ namespace Music_School_DB.Pages.Party
         public override string[] IndexColumns { get; } = new[] {
             nameof(InstrumentView.ID),
             nameof(InstrumentView.InstrumentName),
-            nameof(InstrumentView.Classification),
+            nameof(InstrumentView.Classification)
         };
     }
 }

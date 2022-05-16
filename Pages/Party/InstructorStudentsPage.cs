@@ -21,7 +21,7 @@ namespace Music_School_DB.Pages.Party
             nameof(InstructorStudentView.Name),
             nameof(InstructorStudentView.InstructorID),
             nameof(InstructorStudentView.StudentID),
-            nameof(InstructorStudentView.Description),
+            nameof(InstructorStudentView.Description)
         };
         public IEnumerable<SelectListItem> Instructors
             => instructors?.GetAll(x => x.ToString())?.Select(x => new SelectListItem(x.ToString(), x.ID)) ?? new List<SelectListItem>();
