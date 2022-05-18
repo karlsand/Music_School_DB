@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Music_School_DB.Data;
+using Soft.Data;
 using Music_School_DB.Domain;
 using Music_School_DB.Domain.Party;
 using Music_School_DB.Infra;

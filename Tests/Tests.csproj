@@ -24,7 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Music_School_DB\Music_School_DB.csproj" />
+    <ProjectReference Include="..\Music_School_DB\Soft.csproj" />
   </ItemGroup>
 
 </Project>

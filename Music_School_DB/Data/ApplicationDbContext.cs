@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Music_School_DB.Infra;
 
-namespace Music_School_DB.Data
+namespace Soft.Data
 {
     public class ApplicationDbContext : IdentityDbContext
     {
