@@ -6,12 +6,19 @@ using System.Collections.Generic;
 
 namespace Music_School_DB.Tests.Aids
 {
-    [TestClass] public class GetRandomTests : IsTypeTested 
+    [TestClass] public class GetRandomTests : TypeTests 
     {
         private void test<T>(T min, T max) where T : IComparable<T>
         {
             var x = GetRandom.Value(min, max);
             var y = GetRandom.Value(min, max);
+            var i = 0;
+            while (x == y)
+            {
+                y = GetRandom.Value(min, max);
+                if (i == 2) areNotEqual(x, y);
+                i++;
+            }
             isInstanceOfType(x, typeof(T));
             isInstanceOfType(y, typeof(T));
             isTrue(x >= (min.CompareTo(max) < 0 ? min : max));

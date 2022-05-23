@@ -1,24 +1,27 @@
-﻿using Music_School_DB.Aids;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Music_School_DB.Aids;
 using System;
 using System.Diagnostics;
 using System.Reflection;
 
 namespace Music_School_DB.Tests
 {
-    public abstract class BaseTests : IsTypeTested
+    public abstract class BaseTests<TClass, TBaseClass> : TypeTests where TClass : class where TBaseClass : class
     {
-        protected object obj;
+        protected TClass obj;
         protected BaseTests() => obj = createObj();
-        protected abstract object createObj();
-        protected void isProperty<T>(T? value = default, bool isReadOnly = false)
+        protected abstract TClass createObj();
+        protected void isProperty<T>(T? value = default, bool isReadOnly = false, string? callingMethod = null)
         {
-            var memberName = getCallingMember(nameof(isProperty)).Replace("Test", string.Empty);
+            callingMethod ??= nameof(isProperty);
+            var memberName = getCallingMember(callingMethod).Replace("Test", string.Empty);
             var propertyInfo = obj.GetType().GetProperty(memberName);
             isNotNull(propertyInfo);
             if (isNullOrDefault(value)) value = random<T>();
             if (canWrite(propertyInfo, isReadOnly)) propertyInfo.SetValue(obj, value);
             areEqual(value, propertyInfo.GetValue(obj));
         }
+        protected void isReadOnly<T>(T? value) => isProperty(value, true, nameof(isReadOnly));
         private static bool isNullOrDefault<T>(T? value) => value?.Equals(default(T)) ?? true;
         private static bool canWrite(PropertyInfo i, bool isReadOnly)
         {
@@ -56,5 +59,6 @@ namespace Music_School_DB.Tests
             }
             isTrue(hasProperties, $"No properties found for {x}");
         }
+        [TestMethod] public void BaseClassTest() => areEqual(typeof(TClass).BaseType, typeof(TBaseClass));
     }
 }

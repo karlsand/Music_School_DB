@@ -2,5 +2,5 @@
 
 namespace Music_School_DB.Tests.Pages
 {
-    [TestClass] public class IsPagesTested : IsAssemblyTested { }
+    [TestClass] public class IsPagesTested : AssemblyTests { }
 }

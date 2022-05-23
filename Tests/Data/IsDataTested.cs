@@ -2,5 +2,5 @@
 
 namespace Music_School_DB.Tests.Data
 {
-    [TestClass] public class IsDataTested : IsAssemblyTested { }
+    [TestClass] public class IsDataTested : AssemblyTests { }
 }

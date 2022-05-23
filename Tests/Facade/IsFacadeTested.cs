@@ -2,5 +2,5 @@
 
 namespace Music_School_DB.Tests.Facade
 {
-    [TestClass] public class IsFacadeTested : IsAssemblyTested { }
+    [TestClass] public class IsFacadeTested : AssemblyTests { }
 }

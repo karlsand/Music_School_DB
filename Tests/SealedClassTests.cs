@@ -2,9 +2,9 @@
 
 namespace Music_School_DB.Tests
 {
-    public abstract class SealedClassTests<TClass> : BaseTests where TClass : class, new()
+    public abstract class SealedClassTests<TClass, TBaseClass> : BaseTests<TClass, TBaseClass> where TClass : class, new() where TBaseClass : class
     {
-        protected override object createObj() => new TClass();
+        protected override TClass createObj() => new TClass();
         [TestMethod] public void IsSealedTest() => isTrue(obj?.GetType()?.IsSealed ?? false);
     }
 }

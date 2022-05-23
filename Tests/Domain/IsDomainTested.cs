@@ -2,5 +2,5 @@
 
 namespace Music_School_DB.Tests.Domain
 {
-    [TestClass] public class IsDomainTested : IsAssemblyTested { }
+    [TestClass] public class IsDomainTested : AssemblyTests { }
 }

@@ -1,7 +1,4 @@
 ﻿namespace Music_School_DB.Data.Party
 {
-    public class CurrencyData : NamedData
-    {
-        
-    }
+    public sealed class CurrencyData : NamedData { }
 }

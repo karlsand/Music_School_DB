@@ -2,14 +2,13 @@
 using Music_School_DB.Aids;
 using Music_School_DB.Data.Party;
 using Music_School_DB.Domain.Party;
+using Music_School_DB.Facade;
 using Music_School_DB.Facade.Party;
-using System;
-using System.Reflection;
 
 namespace Music_School_DB.Tests.Facade.Party
 {
     [TestClass]
-    public class InstructorViewFactoryTests : SealedClassTests<InstructorViewFactory>
+    public class InstructorViewFactoryTests : SealedClassTests<InstructorViewFactory, BaseViewFactory<InstructorView, Instructor, InstructorData>>
     {
         [TestMethod] public void CreateTest() { }
         [TestMethod] public void CreateViewTest() 

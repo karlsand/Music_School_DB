@@ -1,10 +1,11 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Music_School_DB.Facade;
 using Music_School_DB.Facade.Party;
 
 namespace Music_School_DB.Tests.Facade.Party;
 
 [TestClass]
-public class InstructorViewTests : SealedClassTests<InstructorView>
+public class InstructorViewTests : SealedClassTests<InstructorView, UniqueView>
 {
     [TestMethod] public void IDTest() => isProperty<string>();
     [TestMethod] public void InstrumentIDTest() => isProperty<string?>();

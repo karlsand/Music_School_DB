@@ -3,7 +3,7 @@
 namespace Music_School_DB.Domain.Party
 {
     public interface ICountriesRepo : IRepo<Country> { }
-    public class Country : NamedEntity<CountryData>
+    public sealed class Country : NamedEntity<CountryData>
     {
         public Country() : this(new ()) { }
         public Country(CountryData d) : base(d) { }
